@@ -3,13 +3,162 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>3-Carousel</title>
     <style>
-      /* write CSS here */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 10px;
+        overflow: hidden;
+      }
+      body {
+        background-color: #424242;
+      }
+      .navigate-btn {
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        padding: 5px 5px 0 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        background-color: rgba(124, 124, 124, 0.3);
+        color: #fff;
+        font-size: 30px;
+      }
+      .navigate-btn:hover {
+        border-color: #fff;
+      }
+      .navigate-next {
+        right: 20px;
+      }
+      .navigate-prev {
+        left: 20px;
+      }
+      .carousel-wrapper {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+      .image-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+      .image-slide {
+        flex: 1 0 100%;
+        transition: all 0.5s ease-in-out;
+      }
+      .image-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .pagination-dots {
+        display: inline-block;
+        background-color: #fff;
+        opacity: 0.3;
+        cursor: pointer;
+        margin: 0 8px;
+        border-radius: 50%;
+        height: 17px;
+        width: 17px;
+        transition: opacity 0.3s;
+      }
+      .pagination-dots:hover {
+        opacity: 1;
+      }
+      .dots-container {
+        position: absolute;
+        bottom: 20px;
+        left: 45%;
+        display: flex;
+        z-index: 3;
+      }
     </style>
   </head>
-  <body></body>
+  <body>
+    <section class="carousel-wrapper">
+      <button class="navigate-btn navigate-prev">
+        <span>
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </span>
+      </button>
+      <button class="navigate-btn navigate-next">
+        <span>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </span>
+      </button>
+      <div class="image-container">
+        <figure class="image-slide">
+          <img src="images/1.jpg" />
+        </figure>
+        <figure class="image-slide">
+          <img src="images/2.avif" />
+        </figure>
+        <figure class="image-slide">
+          <img src="images/3.avif" />
+        </figure>
+        <figure class="image-slide">
+          <img src="images/4.avif" />
+        </figure>
+        <figure class="image-slide">
+          <img src="images/5.avif" />
+        </figure>
+      </div>
+      <div class="dots-container">
+        <div class="pagination-dots"></div>
+        <div class="pagination-dots"></div>
+        <div class="pagination-dots"></div>
+        <div class="pagination-dots"></div>
+        <div class="pagination-dots"></div>
+      </div>
+    </section>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
   <script>
-    // write javascript here
+    "use strict";
+    const nextBtn = document.querySelector(".navigate-next");
+    const prevBtn = document.querySelector(".navigate-prev");
+    const images = document.querySelectorAll(".image-slide");
+    const dots = document.querySelectorAll(".pagination-dots");
+    let index = 0;
+    dots[index].style.opacity = 1;
+    const updateSlide = function () {
+      for (let i = 0; i < images.length; i++) {
+        images[i].style.transform = `translateX(${index * -100}%)`;
+        dots[i].style.opacity = 0.3;
+      }
+      dots[index].style.opacity = 1;
+    };
+    const nextSlide = function () {
+      index < images.length - 1 ? index++ : (index = 0);
+      updateSlide();
+    };
+    const prevSlide = function () {
+      index == 0 ? (index = images.length - 1) : index--;
+      updateSlide();
+    };
+    const dotClick = function (i) {
+      index = i;
+      updateSlide();
+    };
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].addEventListener("click", function () {
+        dotClick(i);
+      });
+    }
   </script>
 </html>

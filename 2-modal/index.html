@@ -4,12 +4,220 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       /* write CSS here */
+      body {
+        background-color: rgba(250, 249, 249, 0.795);
+      }
+      .main_conationer {
+        height: 100vh;
+        position: relative;
+      }
+      .deactive_btn {
+        position: absolute;
+        width: 250px;
+        height: 60px;
+        background-color: red;
+        border-radius: 25px;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .deactive_btn:hover {
+        background-color: white;
+        box-shadow: rgba(236, 61, 17, 0.904) 0px 7px 29px 0px;
+        color: black;
+      }
+      .warning_icon {
+        background-color: rgba(250, 91, 91, 0.877);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        height: auto;
+      }
+      .icon {
+        color: red;
+        padding: 10px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: rgba(255, 165, 165, 0.575);
+      }
+      .prompt {
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        border-radius: 15px;
+      }
+      .cross_icon {
+        font-size: 28px;
+        top: 13%;
+        left: 95%;
+        transform: translate(-50%, -50%);
+        color: rgba(121, 116, 116, 0.801);
+        position: absolute;
+        cursor: pointer;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 999;
+      }
+      .overlay.active {
+        display: block;
+      }
+      .prompt {
+        z-index: 1000;
+      }
+      .cross_icon:hover {
+        color: red;
+      }
+      .content_flex {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 10px;
+      }
+      .deactive_heading {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 500;
+        font-family: "Poppins";
+      }
+      .second {
+        align-self: flex-start;
+      }
+      .are_you_sure_para {
+        margin: 7px 0 0 0;
+        padding-right: 30px;
+        font-family: "Roboto", sans-serif;
+      }
+      .cancel_btn {
+        padding: 8px 15px;
+        border-radius: 7px;
+        font-size: 15px;
+        font-size: 16px;
+        font-family: "Roboto", sans-serif;
+        cursor: pointer;
+        border: none;
+      }
+      .cancel_btn:hover {
+        box-shadow: rgba(117, 117, 117, 0.801) 0px 4px 10px 0px;
+      }
+      .deactivate_btn {
+        padding: 8px 15px;
+        border-radius: 7px;
+        font-size: 16px;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        background-color: red;
+        border: none;
+      }
+      .deactivate_btn:hover {
+        cursor: pointer;
+        box-shadow: rgba(236, 61, 17, 0.904) 0px 4px 10px 0px;
+      }
+      .button_flex_section {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin: 15px 10px 0 50px;
+      }
+      .hidden {
+        display: none;
+      }
     </style>
   </head>
-  <body></body>
+  <body>
+    <main class="main_container">
+      <button class="deactive_btn">Deactivate Account</button>
+      <div class="prompt hidden">
+        <ion-icon class="cross_icon" name="close-outline"></ion-icon>
+        <main class="content_flex">
+          <div class="second">
+            <ion-icon class="icon" name="warning-outline"></ion-icon>
+          </div>
+          <div class="content">
+            <p class="deactive_heading">Deactivate Account</p>
+            <p class="are_you_sure_para">
+              Are you sure you want to deactivate your account? All of your data
+              will be permanently removed from our servers forever. This action
+              cannot be undone.
+            </p>
+            <main class="button_flex_section">
+              <button class="cancel_btn">Cancel</button>
+              <button class="deactivate_btn">Deactivate</button>
+            </main>
+          </div>
+        </main>
+      </div>
+    </main>
+  </body>
   <script>
     // write javascript here
+    const jsdeactive_btn = document.querySelector(".deactive_btn");
+    const jsprompt = document.querySelector(".prompt");
+    const jscancel_btn = document.querySelector(".cancel_btn");
+    const jsdeactivate_btn = document.querySelector(".deactivate_btn");
+    const jscross_icon = document.querySelector(".cross_icon");
+    const jsmain_container = document.querySelector(".main_container");
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
+    jsdeactive_btn.addEventListener("click", function () {
+      jsprompt.classList.remove("hidden");
+      overlay.classList.add("active");
+    });
+    jscancel_btn.addEventListener("click", function () {
+      jsprompt.classList.add("hidden");
+      overlay.classList.remove("active");
+    });
+
+    jscross_icon.addEventListener("click", function () {
+      jsprompt.classList.add("hidden");
+      overlay.classList.remove("active");
+    });
+
+    jsdeactivate_btn.addEventListener("click", function () {
+      alert("Account has been deactivated!!");
+      jsprompt.classList.add("hidden");
+      overlay.classList.remove("active");
+    });
+
+    overlay.addEventListener("click", function () {
+      jsprompt.classList.add("hidden");
+      overlay.classList.remove("active");
+    });
   </script>
 </html>
