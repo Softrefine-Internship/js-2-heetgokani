@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,26 +16,61 @@
         height: 100vh;
         position: relative;
       }
+      body {
+        background-color: rgba(146, 140, 140, 0.699);
+      }
       .prompt {
-        background-color: rgb(235, 111, 111);
+        background-color: white;
         width: 700px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         position: absolute;
-        padding: 30px 20px 20px 20px;
+        padding: 30px 20px 0px 20px;
       }
       .heading_flex {
         display: flex;
-        gap: 50px;
-        padding-bottom: 20px;
-        border-bottom: solid 2px gray;
+        border-bottom: solid 1px gray;
       }
       .profile_section,
       .dashboard_section,
       .setting_section,
       .contact_section {
-        font-size: 20px;
+        font-size: 17px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 0 20px 20px 20px;
+        font-family: "Roboto";
+        color: rgb(119, 119, 119);
+      }
+      .profile_section:hover,
+      .dashboard_section:hover,
+      .setting_section:hover,
+      .contact_section:hover {
+        box-shadow: inset 0 -2px 0 blue;
+        color: blue;
+      }
+      .active {
+        box-shadow: inset 0 -2px 0 blue;
+        color: blue;
+      }
+      .content {
+        margin: 10px 3px 5px 3px;
+        border-radius: 5px;
+        background-color: rgba(119, 116, 116, 0.082);
+      }
+      .profile_para,
+      .dashboard_para,
+      .setting_para,
+      .contact_para {
+        padding: 15px;
+        font-size: 17px;
+        color: rgba(48, 45, 45, 0.863);
+        font-family: "Roboto";
+      }
+      .hidden {
+        display: none;
       }
     </style>
   </head>
@@ -43,15 +78,94 @@
     <main class="main_container">
       <div class="prompt">
         <section class="heading_flex">
-          <div class="profile_section">Profile</div>
-          <div class="dashboard_section">Dashboard</div>
-          <div class="setting_section">Settings</div>
-          <div class="contact_section">Contacts</div>
+          <button class="profile_section">Profile</button>
+          <button class="dashboard_section">Dashboard</button>
+          <button class="setting_section">Settings</button>
+          <button class="contact_section">Contacts</button>
         </section>
+        <main class="content">
+          <p class="profile_para hidden">
+            This is some placeholder content the
+            <b>Profile tab's associated content.</b>
+            Clicking another tab will toggle the visibility of this one for the
+            next. The tab JavaScript swaps classes to control the content
+            visibility and styling.
+          </p>
+          <p class="dashboard_para hidden">
+            This is some placeholder content the
+            <b>Dashboard tab's associated content.</b>
+            Clicking another tab will toggle the visibility of this one for the
+            next. The tab JavaScript swaps classes to control the content
+            visibility and styling.
+          </p>
+          <p class="setting_para hidden">
+            This is some placeholder content the
+            <b>Settings tab's associated content.</b>
+            Clicking another tab will toggle the visibility of this one for the
+            next. The tab JavaScript swaps classes to control the content
+            visibility and styling.
+          </p>
+          <p class="contact_para hidden">
+            This is some placeholder content the
+            <b>Contact tab's associated content.</b>
+            Clicking another tab will toggle the visibility of this one for the
+            next. The tab JavaScript swaps classes to control the content
+            visibility and styling.
+          </p>
+        </main>
       </div>
     </main>
   </body>
   <script>
     // write javascript here
+    const jsprofile_section = document.querySelector(".profile_section");
+    const jsdashboard_section = document.querySelector(".dashboard_section");
+    const jssetting_section = document.querySelector(".setting_section");
+    const jscontact_section = document.querySelector(".contact_section");
+    const jsprofile_para = document.querySelector(".profile_para");
+    const jsdashboard_para = document.querySelector(".dashboard_para");
+    const jssetting_para = document.querySelector(".setting_para");
+    const jscontact_para = document.querySelector(".contact_para");
+    jsprofile_section.addEventListener("click", function () {
+      jsprofile_section.classList.add("active");
+      jsdashboard_section.classList.remove("active");
+      jssetting_section.classList.remove("active");
+      jscontact_section.classList.remove("active");
+      jsprofile_para.classList.remove("hidden");
+      jscontact_para.classList.add("hidden");
+      jsdashboard_para.classList.add("hidden");
+      jssetting_para.classList.add("hidden");
+    });
+    jsdashboard_section.addEventListener("click", function () {
+      jsprofile_section.classList.remove("active");
+      jsdashboard_section.classList.add("active");
+      jssetting_section.classList.remove("active");
+      jscontact_section.classList.remove("active");
+      jsprofile_para.classList.add("hidden");
+      jscontact_para.classList.add("hidden");
+      jsdashboard_para.classList.remove("hidden");
+      jssetting_para.classList.add("hidden");
+    });
+    jssetting_section.addEventListener("click", function () {
+      jsprofile_section.classList.remove("active");
+      jsdashboard_section.classList.remove("active");
+      jssetting_section.classList.add("active");
+      jscontact_section.classList.remove("active");
+      jsprofile_para.classList.add("hidden");
+      jscontact_para.classList.add("hidden");
+      jsdashboard_para.classList.add("hidden");
+      jssetting_para.classList.remove("hidden");
+    });
+    jscontact_section.addEventListener("click", function () {
+      jsprofile_section.classList.remove("active");
+      jsdashboard_section.classList.remove("active");
+      jssetting_section.classList.remove("active");
+      jscontact_section.classList.add("active");
+      jsprofile_para.classList.add("hidden");
+      jscontact_para.classList.remove("hidden");
+      jsdashboard_para.classList.add("hidden");
+      jssetting_para.classList.add("hidden");
+    });
+    jsprofile_section.click();
   </script>
 </html>

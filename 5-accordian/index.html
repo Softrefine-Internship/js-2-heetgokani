@@ -3,13 +3,222 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Accordian</title>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       /* write CSS here */
+      .main_conationer {
+        height: 100vh;
+        position: relative;
+      }
+      .prompt {
+        background-color: white;
+        width: 700px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        padding: 10px;
+      }
+      body {
+        background-color: rgba(146, 140, 140, 0.699);
+      }
+      .accordian {
+        border: solid 1px gray;
+        border-radius: 7px;
+      }
+      .heading_flex_1,
+      .heading_flex_2,
+      .heading_flex_3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px gray;
+        padding: 0 10px;
+      }
+      .heading_content_1,
+      .heading_content_2,
+      .heading_content_3 {
+        font-size: 18px;
+        font-family: "Roboto";
+        cursor: pointer;
+      }
+      .icon_1,
+      .icon_2,
+      .icon_3 {
+        width: 25px;
+        height: 20px;
+      }
+      span {
+        color: red;
+      }
+      .accordian_content_section {
+        border-bottom: solid 1px gray;
+      }
+      .accordian_content_section:last-child {
+        border-bottom: none;
+      }
+
+      .accordian_content_first,
+      .accordian_content_second,
+      .accordian_content_third {
+        font-family: "Roboto";
+        padding: 0px 10px;
+        font-size: 17px;
+      }
+      .hidden {
+        display: none;
+      }
+      .heading_flex_1:hover .heading_content_1,
+      .heading_flex_1:hover .icon_1,
+      .heading_flex_1:hover {
+        color: blue;
+        cursor: pointer;
+      }
+      .heading_flex_2:hover .heading_content_2,
+      .heading_flex_2:hover .icon_2,
+      .heading_flex_2:hover {
+        color: blue;
+        cursor: pointer;
+      }
+      .heading_flex_3:hover .heading_content_3,
+      .heading_flex_3:hover .icon_3,
+      .heading_flex_3:hover {
+        color: blue;
+        cursor: pointer;
+      }
+      .active {
+        color: blue;
+        cursor: pointer;
+      }
     </style>
   </head>
-  <body></body>
+  <body>
+    <main class="main_container">
+      <div class="prompt">
+        <div class="accordian">
+          <div class="heading_flex_1">
+            <p class="heading_content_1">Accordian Item #1</p>
+            <div class="heading_icon_1">
+              <ion-icon class="icon_1" name="chevron-down-outline"></ion-icon>
+            </div>
+          </div>
+          <section class="accordian_content_section">
+            <p class="accordian_content_first hidden">
+              <b>This is the first item's accordion body</b>. It is shown by
+              default, until the collapse plugin adds the appropriate classes
+              that we use to style each element. It's also worth nothing that
+              just about any HTML can go within the
+              <span>.accordion- body</span>, though the transition does limit
+              overflow.
+            </p>
+          </section>
+          <!-- Second Row -->
+          <div class="heading_flex_2">
+            <p class="heading_content_2">Accordian Item #2</p>
+            <div class="heading_icon_2">
+              <ion-icon class="icon_2" name="chevron-down-outline"></ion-icon>
+            </div>
+          </div>
+          <section class="accordian_content_section">
+            <p class="accordian_content_second hidden">
+              <b>This is the second item's accordion body</b>. It is shown by
+              default, until the collapse plugin adds the appropriate classes
+              that we use to style each element. It's also worth nothing that
+              just about any HTML can go within the
+              <span>.accordion- body</span>, though the transition does limit
+              overflow.
+            </p>
+          </section>
+          <!-- Third Row -->
+          <div class="heading_flex_3">
+            <p class="heading_content_3">Accordian Item #3</p>
+            <div class="heading_icon_3">
+              <ion-icon class="icon_3" name="chevron-down-outline"></ion-icon>
+            </div>
+          </div>
+          <section class="accordian_content_section">
+            <p class="accordian_content_third hidden">
+              <b>This is the third item's accordion body</b>. It is shown by
+              default, until the collapse plugin adds the appropriate classes
+              that we use to style each element. It's also worth nothing that
+              just about any HTML can go within the
+              <span>.accordion- body</span>, though the transition does limit
+              overflow.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
   <script>
     // write javascript here
+    const jsheading_1 = document.querySelector(".heading_content_1");
+    const jsheading_2 = document.querySelector(".heading_content_2");
+    const jsheading_3 = document.querySelector(".heading_content_3");
+    const jscontent1 = document.querySelector(".accordian_content_first");
+    const jscontent2 = document.querySelector(".accordian_content_second");
+    const jscontent3 = document.querySelector(".accordian_content_third");
+    const flex_1 = document.querySelector(".heading_flex_1");
+    const flex_2 = document.querySelector(".heading_flex_2");
+    const flex_3 = document.querySelector(".heading_flex_3");
+    const icon_1 = document.querySelector(".icon_1");
+    const icon_2 = document.querySelector(".icon_2");
+    const icon_3 = document.querySelector(".icon_3");
+    function up_icon(jscontent, icon) {
+      if (jscontent.classList.contains("hidden")) {
+        icon.setAttribute("name", "chevron-down-outline");
+      } else {
+        icon.setAttribute("name", "chevron-up-outline");
+      }
+    }
+    up_icon(jscontent1, icon_1);
+    up_icon(jscontent2, icon_2);
+    up_icon(jscontent3, icon_3);
+    flex_1.addEventListener("click", function () {
+      jscontent1.classList.remove("hidden");
+      jscontent2.classList.add("hidden");
+      jscontent3.classList.add("hidden");
+      flex_1.classList.add("active");
+      flex_2.classList.remove("active");
+      flex_3.classList.remove("active");
+      up_icon(jscontent1, icon_1);
+      up_icon(jscontent2, icon_2);
+      up_icon(jscontent3, icon_3);
+    });
+    flex_2.addEventListener("click", function () {
+      jscontent1.classList.add("hidden");
+      jscontent2.classList.remove("hidden");
+      jscontent3.classList.add("hidden");
+      flex_1.classList.remove("active");
+      flex_2.classList.add("active");
+      flex_3.classList.remove("active");
+      up_icon(jscontent1, icon_1);
+      up_icon(jscontent2, icon_2);
+      up_icon(jscontent3, icon_3);
+    });
+    flex_3.addEventListener("click", function () {
+      jscontent1.classList.add("hidden");
+      jscontent2.classList.add("hidden");
+      jscontent3.classList.remove("hidden");
+      flex_1.classList.remove("active");
+      flex_2.classList.remove("active");
+      flex_3.classList.add("active");
+      up_icon(jscontent1, icon_1);
+      up_icon(jscontent2, icon_2);
+      up_icon(jscontent3, icon_3);
+    });
+    flex_1.click();
   </script>
 </html>
