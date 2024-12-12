@@ -4,11 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       /* write CSS here */
+      .main_conationer {
+        height: 100vh;
+        position: relative;
+      }
+      .prompt {
+        background-color: rgb(235, 111, 111);
+        width: 700px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        padding: 30px 20px 20px 20px;
+      }
+      .heading_flex {
+        display: flex;
+        gap: 50px;
+        padding-bottom: 20px;
+        border-bottom: solid 2px gray;
+      }
+      .profile_section,
+      .dashboard_section,
+      .setting_section,
+      .contact_section {
+        font-size: 20px;
+      }
     </style>
   </head>
-  <body></body>
+  <body>
+    <main class="main_container">
+      <div class="prompt">
+        <section class="heading_flex">
+          <div class="profile_section">Profile</div>
+          <div class="dashboard_section">Dashboard</div>
+          <div class="setting_section">Settings</div>
+          <div class="contact_section">Contacts</div>
+        </section>
+      </div>
+    </main>
+  </body>
   <script>
     // write javascript here
   </script>
