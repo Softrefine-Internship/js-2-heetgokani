@@ -3,13 +3,192 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile-navbar</title>
+    <title>Mobile-Navbar</title>
     <style>
       /* write CSS here */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      html {
+        font-size: 60%;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+      }
+      .header {
+        display: flex;
+        position: relative;
+        padding: 0 4rem;
+        justify-content: space-between;
+        height: 10rem;
+        align-items: center;
+        width: 100%;
+        background-color: #fbead8;
+      }
+      .logo {
+        height: 2.5rem;
+      }
+      .nav-links,
+      .menu-items {
+        align-items: center;
+        display: flex;
+        list-style: none;
+        gap: 4rem;
+      }
+      .nav-link {
+        font-size: 2rem;
+        font-weight: 500;
+        color: #000000;
+        transition: all 0.3s;
+        text-decoration: none;
+      }
+      .nav-link:hover {
+        color: orangered;
+      }
+      .btn-signup {
+        color: white;
+        font-size: 1.8rem;
+        font-weight: 500;
+        background-color: #f8890a;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 0.8rem;
+      }
+      .btn-signup:hover {
+        background-color: #e6881e;
+      }
+      .hidden {
+        display: none;
+      }
+      .toggle-btn {
+        z-index: 1000;
+        cursor: pointer;
+        height: 5rem;
+        width: 5rem;
+        margin-right: 1.2rem;
+      }
+      .close-btn {
+        position: absolute;
+        border: 3px solid #d9821f;
+        top: 4%;
+        right: 4%;
+      }
+      .menu-items {
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        background-color: #f5f5f5;
+        position: relative;
+      }
+      .menu-link {
+        font-size: 2.5rem !important;
+        cursor: pointer;
+        font-weight: 600 !important;
+      }
+      @media (max-width: 80em) {
+        html {
+          font-size: 57%;
+        }
+      }
+      @media (max-width: 70em) {
+        html {
+          font-size: 54%;
+        }
+      }
+      @media (max-width: 60em) {
+        html {
+          font-size: 48%;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .menu-toggle {
+          display: block;
+        }
+      }
+      .menu-title {
+        font-size: 2.5rem;
+      }
     </style>
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <a href="#">
+        <img src="images/1.png" alt="logo" class="logo" />
+      </a>
+      <nav class="nav-bar">
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link">How it works</a></li>
+          <li><a href="#" class="nav-link">Meals</a></li>
+          <li><a href="#" class="nav-link">Testimonials</a></li>
+          <li><a href="#" class="nav-link">Pricing</a></li>
+          <li><a href="#" class="btn-signup">Try for free</a></li>
+        </ul>
+      </nav>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="toggle-btn menu-toggle hidden"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+    </header>
+    <nav class="dropdown hidden">
+      <ul class="menu-items">
+        <li><a href="#" class="nav-link menu-title">How it works</a></li>
+        <li><a href="#" class="nav-link menu-title">Meals</a></li>
+        <li><a href="#" class="nav-link menu-title">Testimonials</a></li>
+        <li><a href="#" class="nav-link menu-title">Pricing</a></li>
+        <li><a href="#" class="btn-signup menu-title">Try for free</a></li>
+      </ul>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="toggle-btn close-btn"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18 18 6M6 6l12 12"
+        />
+      </svg>
+    </nav>
+  </body>
   <script>
     // write javascript here
+    const menuBtn = document.querySelector(".menu-toggle");
+    const closeBtn = document.querySelector(".close-btn");
+    const headerBar = document.querySelector(".header");
+    const dropdownMenu = document.querySelector(".dropdown");
+    menuBtn.addEventListener("click", function () {
+      headerBar.classList.add("hidden");
+      dropdownMenu.classList.remove("hidden");
+    });
+    closeBtn.addEventListener("click", function () {
+      headerBar.classList.remove("hidden");
+      dropdownMenu.classList.add("hidden");
+    });
   </script>
 </html>
